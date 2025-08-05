@@ -1,0 +1,170 @@
+:root {
+  --primary: #4a90e2;
+  --bg: #f4f6f8;
+  --white: #fff;
+  --gray: #ccc;
+  --dark: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+}
+
+header {
+  background: var(--white);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.search-bar {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+aside {
+  background: var(--white);
+  padding: 1rem;
+  min-width: 200px;
+  border-right: 1px solid var(--gray);
+}
+
+aside ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+aside ul li {
+  cursor: pointer;
+}
+
+main {
+  padding: 1rem;
+  flex: 1;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.card {
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card i {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.card h3 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.card .value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.table-section {
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--gray);
+  text-align: left;
+}
+
+.actions i {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--white);
+  border-top: 1px solid var(--gray);
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  aside {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  aside {
+    min-width: 60px;
+  }
+
+  aside ul li {
+    font-size: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-toggle {
+    display: none;
+  }
+}

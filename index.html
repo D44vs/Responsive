@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <i class="fas fa-cogs"></i> Admin Panel
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar...">
+    </div>
+    <div class="header-right">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-user-circle"></i>
+      <span>Jerson</span>
+      <i class="fas fa-bars menu-toggle"></i>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <ul>
+        <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+        <li><i class="fas fa-users"></i> Usuarios</li>
+        <li><i class="fas fa-box"></i> Productos</li>
+        <li><i class="fas fa-shopping-cart"></i> Ventas</li>
+        <li><i class="fas fa-chart-line"></i> Reportes</li>
+        <li><i class="fas fa-cog"></i> Configuración</li>
+      </ul>
+    </aside>
+
+    <main>
+      <h2>Estadísticas Generales</h2>
+      <div class="dashboard">
+        <div class="card">
+          <i class="fas fa-user-check"></i>
+          <h3>Usuarios Activos</h3>
+          <div class="value">1,245</div>
+          <small>+12% este mes</small>
+        </div>
+        <div class="card">
+          <i class="fas fa-boxes"></i>
+          <h3>Productos</h3>
+          <div class="value">320</div>
+          <small>+8% este mes</small>
+        </div>
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Ventas del Mes</h3>
+          <div class="value">$12,500</div>
+          <small>+15% este mes</small>
+        </div>
+        <div class="card">
+          <i class="fas fa-smile"></i>
+          <h3>Satisfacción</h3>
+          <div class="value">92%</div>
+          <small>+3% este mes</small>
+        </div>
+      </div>
+
+      <div class="table-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3>Usuarios Recientes</h3>
+          <button style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 5px;">Agregar Usuario</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Fecha Registro</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Juan Pérez</td>
+              <td>juan@example.com</td>
+              <td>Admin</td>
+              <td>Activo</td>
+              <td>2025-08-01</td>
+              <td class="actions">
+                <i class="fas fa-edit"></i>
+                <i class="fas fa-trash-alt"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    &copy; 2025 Admin Panel. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
