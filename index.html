@@ -1,108 +1,293 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Panel - Estadísticas</title>
+
+  <!-- CSS separado -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Font Awesome (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="" crossorigin="anonymous" />
 </head>
 <body>
+  <!-- Overlay para mobile cuando el sidebar está abierto -->
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
 
-  <header>
-    <div class="logo">
-      <i class="fas fa-cogs"></i> Admin Panel
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <!-- Botón hamburguesa (visible en mobile) -->
+      <button id="btn-toggle" class="btn icon-btn" aria-controls="sidebar" aria-expanded="false" title="Abrir menú">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <span class="sr-only">Abrir menú</span>
+      </button>
+
+      <!-- Logo + texto -->
+      <div class="brand">
+        <i class="fa-solid fa-shield-halved brand-icon" aria-hidden="true"></i>
+        <span class="brand-text">Admin Panel</span>
+      </div>
     </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar...">
+
+    <!-- Barra de búsqueda -->
+    <div class="header-center">
+      <label for="q" class="sr-only">Buscar</label>
+      <div class="search">
+        <input id="q" type="search" placeholder="Buscar..." />
+        <button class="icon-btn" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
     </div>
+
+    <!-- Notificaciones y perfil -->
     <div class="header-right">
-      <i class="fas fa-bell"></i>
-      <i class="fas fa-user-circle"></i>
-      <span>Jerson</span>
-      <i class="fas fa-bars menu-toggle"></i>
+      <button class="icon-btn" aria-label="Notificaciones">
+        <i class="fa-regular fa-bell"></i>
+        <span class="notif-badge" aria-hidden="true">3</span>
+      </button>
+
+      <div class="profile">
+        <img class="avatar" src="https://i.pravatar.cc/40?img=3" alt="Avatar" width="36" height="36">
+        <span class="username">David</span>
+        <button id="btn-user" class="icon-btn" aria-haspopup="true" aria-expanded="false" aria-controls="user-menu" title="Opciones de usuario">
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+
+        <!-- Menú de usuario desplegable -->
+        <div id="user-menu" class="dropdown" role="menu" aria-hidden="true">
+          <a href="#" role="menuitem"><i class="fa-regular fa-user"></i> Perfil</a>
+          <a href="#" role="menuitem"><i class="fa-solid fa-gear"></i> Ajustes</a>
+          <a href="#" role="menuitem"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+        </div>
+      </div>
     </div>
   </header>
 
+  <!-- Layout: Sidebar + Main -->
   <div class="layout">
-    <aside>
-      <ul>
-        <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-        <li><i class="fas fa-users"></i> Usuarios</li>
-        <li><i class="fas fa-box"></i> Productos</li>
-        <li><i class="fas fa-shopping-cart"></i> Ventas</li>
-        <li><i class="fas fa-chart-line"></i> Reportes</li>
-        <li><i class="fas fa-cog"></i> Configuración</li>
-      </ul>
+    <!-- Sidebar (colapsable en tablet y móvil) -->
+    <aside id="sidebar" class="sidebar" aria-hidden="false">
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-tachometer-alt"></i><span class="nav-text">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-users"></i><span class="nav-text">Usuarios</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-box"></i><span class="nav-text">Productos</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-cart-shopping"></i><span class="nav-text">Ventas</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i><span class="nav-text">Reportes</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-gear"></i><span class="nav-text">Configuración</span>
+        </a>
+      </nav>
     </aside>
 
-    <main>
-      <h2>Estadísticas Generales</h2>
-      <div class="dashboard">
-        <div class="card">
-          <i class="fas fa-user-check"></i>
-          <h3>Usuarios Activos</h3>
-          <div class="value">1,245</div>
-          <small>+12% este mes</small>
-        </div>
-        <div class="card">
-          <i class="fas fa-boxes"></i>
-          <h3>Productos</h3>
-          <div class="value">320</div>
-          <small>+8% este mes</small>
-        </div>
-        <div class="card">
-          <i class="fas fa-dollar-sign"></i>
-          <h3>Ventas del Mes</h3>
-          <div class="value">$12,500</div>
-          <small>+15% este mes</small>
-        </div>
-        <div class="card">
-          <i class="fas fa-smile"></i>
-          <h3>Satisfacción</h3>
-          <div class="value">92%</div>
-          <small>+3% este mes</small>
-        </div>
-      </div>
+    <!-- Main content -->
+    <main class="main">
+      <h2 class="page-title">Estadísticas generales</h2>
 
-      <div class="table-section">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+      <!-- Cards (grid responsivo) -->
+      <section class="cards" aria-label="Estadísticas rápidas">
+        <!-- 1) Usuarios activos -->
+        <article class="card stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+          </div>
+          <div class="stat-body">
+            <h3 class="stat-title">Usuarios Activos</h3>
+            <p class="stat-number">1.245</p>
+            <p class="stat-meta"><span class="percent up">+5.4%</span> vs mes anterior</p>
+          </div>
+        </article>
+
+        <!-- 2) Productos -->
+        <article class="card stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+          </div>
+          <div class="stat-body">
+            <h3 class="stat-title">Productos</h3>
+            <p class="stat-number">320</p>
+            <p class="stat-meta"><span class="percent up">+2.1%</span> desde último mes</p>
+          </div>
+        </article>
+
+        <!-- 3) Ventas del mes (COP) -->
+        <article class="card stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          </div>
+          <div class="stat-body">
+            <h3 class="stat-title">Ventas del Mes</h3>
+            <p class="stat-number">₲ 5.430.000 <small class="currency-note">COP</small></p>
+            <p class="stat-meta"><span class="percent up">+8.9%</span> respecto al mes pasado</p>
+          </div>
+        </article>
+
+        <!-- 4) Satisfacción -->
+        <article class="card stat-card">
+          <div class="stat-icon">
+            <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+          </div>
+          <div class="stat-body">
+            <h3 class="stat-title">Satisfacción</h3>
+            <p class="stat-number">92%</p>
+            <p class="stat-meta"><span class="percent up">+1.3%</span> tendencia</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Tabla responsiva de usuarios recientes -->
+      <section class="table-wrap">
+        <div class="table-actions">
           <h3>Usuarios Recientes</h3>
-          <button style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 5px;">Agregar Usuario</button>
+          <button class="btn primary" id="btn-add"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> Agregar Usuario</button>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Rol</th>
-              <th>Estado</th>
-              <th>Fecha Registro</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>001</td>
-              <td>Juan Pérez</td>
-              <td>juan@example.com</td>
-              <td>Admin</td>
-              <td>Activo</td>
-              <td>2025-08-01</td>
-              <td class="actions">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash-alt"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
+        <div class="table-responsive">
+          <table class="data-table" role="table" aria-label="Usuarios recientes">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="ID">001</td>
+                <td data-label="Nombre">Juan Pérez</td>
+                <td data-label="Email">juan.perez@example.com</td>
+                <td data-label="Rol">Admin</td>
+                <td data-label="Estado"><span class="badge active">Activo</span></td>
+                <td data-label="Fecha Registro">2025-07-21</td>
+                <td data-label="Acciones" class="actions">
+                  <button class="icon-only edit" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="icon-only del" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+
+              <tr>
+                <td data-label="ID">002</td>
+                <td data-label="Nombre">María López</td>
+                <td data-label="Email">maria.lopez@example.com</td>
+                <td data-label="Rol">Usuario</td>
+                <td data-label="Estado"><span class="badge active">Activo</span></td>
+                <td data-label="Fecha Registro">2025-08-02</td>
+                <td data-label="Acciones" class="actions">
+                  <button class="icon-only edit" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="icon-only del" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+
+              <tr>
+                <td data-label="ID">003</td>
+                <td data-label="Nombre">Carlos Gómez</td>
+                <td data-label="Email">carlos.gomez@example.com</td>
+                <td data-label="Rol">Vendedor</td>
+                <td data-label="Estado"><span class="badge inactive">Pendiente</span></td>
+                <td data-label="Fecha Registro">2025-07-28</td>
+                <td data-label="Acciones" class="actions">
+                  <button class="icon-only edit" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="icon-only del" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+
+              <tr>
+                <td data-label="ID">004</td>
+                <td data-label="Nombre">Laura Martínez</td>
+                <td data-label="Email">laura.m@example.com</td>
+                <td data-label="Rol">Usuario</td>
+                <td data-label="Estado"><span class="badge active">Activo</span></td>
+                <td data-label="Fecha Registro">2025-06-15</td>
+                <td data-label="Acciones" class="actions">
+                  <button class="icon-only edit" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="icon-only del" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+
+              <tr>
+                <td data-label="ID">005</td>
+                <td data-label="Nombre">Andrés Ruiz</td>
+                <td data-label="Email">andres.r@example.com</td>
+                <td data-label="Rol">Soporte</td>
+                <td data-label="Estado"><span class="badge active">Activo</span></td>
+                <td data-label="Fecha Registro">2025-05-10</td>
+                <td data-label="Acciones" class="actions">
+                  <button class="icon-only edit" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="icon-only del" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
   </div>
 
-  <footer>
-    &copy; 2025 Admin Panel. Todos los derechos reservados.
+  <!-- Footer simple -->
+  <footer class="footer">
+    <p>&copy; 2025 Admin Panel — Todos los derechos reservados.</p>
   </footer>
 
+  <!-- JS mínimo para toggles (sidebar, overlay, user menu) -->
+  <script>
+    (function () {
+      const btnToggle = document.getElementById('btn-toggle');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      const btnUser = document.getElementById('btn-user');
+      const userMenu = document.getElementById('user-menu');
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('visible');
+        btnToggle.setAttribute('aria-expanded', 'true');
+        sidebar.setAttribute('aria-hidden', 'false');
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('visible');
+        btnToggle.setAttribute('aria-expanded', 'false');
+        sidebar.setAttribute('aria-hidden', 'true');
+      }
+
+      btnToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('open')) closeSidebar();
+        else openSidebar();
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      // user menu toggle
+      btnUser.addEventListener('click', (e) => {
+        const expanded = btnUser.getAttribute('aria-expanded') === 'true';
+        btnUser.setAttribute('aria-expanded', String(!expanded));
+        userMenu.classList.toggle('visible');
+        userMenu.setAttribute('aria-hidden', String(expanded));
+      });
+
+      // close user menu on outside click
+      document.addEventListener('click', (e) => {
+        if (!btnUser.contains(e.target) && !userMenu.contains(e.target)) {
+          userMenu.classList.remove('visible');
+          btnUser.setAttribute('aria-expanded', 'false');
+          userMenu.setAttribute('aria-hidden', 'true');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
